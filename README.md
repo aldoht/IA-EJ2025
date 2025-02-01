@@ -1,10 +1,8 @@
 # IA 031 EJ2025 @ FCFM UANL
-- - -
 Repositorio donde se encuentra todo el material relacionado a la clase de Inteligencia Artificial tomada durante el semestre Enero-Junio de 2025.
 
 
 ## Contenido
-- - -
 - [Actividades](#actividades)
   - [Enero - Febrero](#enero---febrero)
   - [Marzo](#marzo)
@@ -22,7 +20,6 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 
 
 ## Actividades
-- - -
 
 ### Enero - Febrero
 
@@ -36,7 +33,6 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 
 
 ## Certificaciones
-- - -
 
 ### Kaggle
 - [Intro to Programming](https://www.kaggle.com/learn/certification/mnstrr/intro-to-programming)
@@ -46,7 +42,6 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 
 
 ## Temario
-- - -
 
 ### Primer Parcial
 1. Introducción a la Inteligencia Artificial
@@ -75,5 +70,4 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 
 
 ## Bibliografía
-- - -
 - Russell, S. J., & Norvig, P. (2010). *Artificial intelligence: A modern approach* (3ra ed.). Pearson. ([pdf](https://people.engr.tamu.edu/guni/csce421/files/AI_Russell_Norvig.pdf))
