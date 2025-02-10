@@ -37,6 +37,7 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 ### Kaggle
 - [Intro to Programming](https://www.kaggle.com/learn/certification/mnstrr/intro-to-programming)
 - [Python](https://www.kaggle.com/learn/certification/mnstrr/python)
+- [Intro to Machine Learning](https://www.kaggle.com/learn/certification/mnstrr/intro-to-machine-learning)
 
 ### IBM (CognitiveClass)
 - [Python 101 for Data Science](https://courses.cognitiveclass.ai/certificates/3ecce9e8f838407dbe48ace645420e0f)
