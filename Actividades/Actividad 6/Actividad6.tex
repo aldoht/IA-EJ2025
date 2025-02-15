@@ -1,0 +1,167 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+Para usar el método de cofactores (o expansión de Laplace), es necesario seleccionar una fila o columna cualquiera de una matriz cuadrada $A$ de orden $n$ para la cual se aplicará la siguiente fórmula
+
+\begin{equation}
+    det(A_{nxn})
+    =
+    \begin{vmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{n1} & a_{n2} & \cdots & a_{nn} \\
+    \end{vmatrix}
+    =
+    \sum_{j=1}^{n}(-1)^{i+j}a_{i,j}m_{i,j}
+\end{equation}
+
+donde $a_{i,j}$ es el elemento en la fila $i$ y columna $j$ de la matriz $A$ y $m_{i,j}$ es el determinante de la menor obtenida al eliminar la fila $i$ y columna $j$ de $A$. Este es el caso al seleccionar una fila determinada $i$, pero si en su lugar se quisiera usar una columna $j$, basta con hacer la sumatoria desde $i=1$ hasta $n$.
+
+\vspace{5mm}
+
+Para utilizar la regla de Sarrus (en el caso de una matriz de orden 3) es requerido copiar las primeras dos columnas de la matriz (de izquierda a derecha) en el lado derecho de la misma. Posteriormente se sumará el producto de los elementos de cada diagonal descendente de "longitud tres" y se restará dicho producto pero de las diagonales ascendentes, de esta manera:
+
+\begin{equation}
+    \begin{aligned}
+        \left(
+        \begin{matrix}
+            a_{11} & a_{12} & a_{13} \\
+            a_{21} & a_{22} & a_{23} \\
+            a_{31} & a_{32} & a_{33} \\
+        \end{matrix}
+        \middle|
+        \begin{matrix}
+            a_{11} & a_{12} \\
+            a_{21} & a_{22} \\
+            a_{31} & a_{32} \\
+        \end{matrix}
+        \right)
+        &= a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} \\
+        & - a_{13}a_{22}a_{31} - a_{11}a_{23}a_{32} - a_{12}a_{21}a_{33}
+    \end{aligned}
+\end{equation}
+
+
+Para el caso de una matriz de orden 4, podemos intentar copiando las primeras tres columnas de la matriz y seguir la misma regla de la suma y resta de diagonales
+
+\begin{equation}
+    \begin{aligned}
+        \left(
+        \begin{matrix}
+            a_{11} & a_{12} & a_{13} & a_{14} \\
+            a_{21} & a_{22} & a_{23} & a_{24} \\
+            a_{31} & a_{32} & a_{33} & a_{34} \\
+            a_{41} & a_{42} & a_{43} & a_{44} \\
+        \end{matrix}
+        \middle|
+        \begin{matrix}
+            a_{11} & a_{12} & a_{13} \\
+            a_{21} & a_{22} & a_{23} \\
+            a_{31} & a_{32} & a_{33} \\
+            a_{41} & a_{42} & a_{43} \\
+        \end{matrix} 
+        \right)
+        & = a_{11}a_{22}a_{33}a_{44} + a_{12}a_{23}a_{34}a_{41} \\
+        & + a_{13}a_{24}a_{31}a_{42} + a_{14}a_{21}a_{32}a_{43} \\
+        & - a_{14}a_{23}a_{32}a_{41} - a_{11}a_{24}a_{33}a_{42} \\
+        & - a_{12}a_{21}a_{34}a_{43} - a_{13}a_{22}a_{31}a_{44}
+    \end{aligned}
+\end{equation}
+
+Ahora, comprobaremos usando el método de cofactores
+
+\begin{equation}
+    \begin{aligned}
+        \left|
+        \begin{matrix}
+            a_{11} & a_{12} & a_{13} & a_{14} \\
+            a_{21} & a_{22} & a_{23} & a_{24} \\
+            a_{31} & a_{32} & a_{33} & a_{34} \\
+            a_{41} & a_{42} & a_{43} & a_{44} \\
+        \end{matrix}
+        \right|
+        & = a_{11}
+            \left|
+            \begin{matrix}
+                a_{22} & a_{23} & a_{24} \\
+                a_{32} & a_{33} & a_{34} \\
+                a_{42} & a_{43} & a_{44} \\
+            \end{matrix}
+            \right|
+        - a_{12}
+            \left|
+            \begin{matrix}
+                a_{21} & a_{23} & a_{24} \\
+                a_{31} & a_{33} & a_{34} \\
+                a_{41} & a_{43} & a_{44} \\
+            \end{matrix}
+            \right|
+        \\    
+        & + a_{13}
+            \left|
+            \begin{matrix}
+                a_{21} & a_{22} & a_{24} \\
+                a_{31} & a_{32} & a_{34} \\
+                a_{41} & a_{42} & a_{44} \\
+            \end{matrix}
+            \right|
+        - a_{14}
+            \left|
+            \begin{matrix}
+                a_{21} & a_{22} & a_{23} \\
+                a_{31} & a_{32} & a_{33} \\
+                a_{41} & a_{42} & a_{43} \\
+            \end{matrix}
+            \right|
+        \\
+        & = a_{11}
+            \left(
+                a_{22}
+                \left|
+                \begin{matrix}
+                    a_{33} & a_{34} \\
+                    a_{43} & a_{44} \\
+                \end{matrix}
+                \right|
+            \right)
+        - a_{12}
+            \left|
+            \begin{matrix}
+                a_{21} & a_{23} & a_{24} \\
+                a_{31} & a_{33} & a_{34} \\
+                a_{41} & a_{43} & a_{44} \\
+            \end{matrix}
+            \right|
+        \\    
+        & + a_{13}
+            \left|
+            \begin{matrix}
+                a_{21} & a_{22} & a_{24} \\
+                a_{31} & a_{32} & a_{34} \\
+                a_{41} & a_{42} & a_{44} \\
+            \end{matrix}
+            \right|
+        - a_{14}
+            \left|
+            \begin{matrix}
+                a_{21} & a_{22} & a_{23} \\
+                a_{31} & a_{32} & a_{33} \\
+                a_{41} & a_{42} & a_{43} \\
+            \end{matrix}
+            \right|
+        \\
+    \end{aligned}
+\end{equation}
+
+Podemos observar que estos no son iguales, por lo que la regla de Sarrus no siempre es válida para determinantes de orden distinto a 3, aunque podemos pensar en algún caso especial; supongamos que a = ..., etc., entonces: 
+
+
+En resumen, el método de cofactores es aplicable para obtener el determinante de cualquier matriz cuadrada, a diferencia de la regla de Sarrus que en realidad sólo es un caso especial de la regla de Leibniz y no siempre es válida para matrices de orden distinto a tres.
+
+Respondiendo a las preguntas del laboratorio:
+1. No es posible aplicar el método de la lluvia para cualquier matriz 4x4, aunque puede ser aplicable si satisface que:
+
+2. No es posible ya que 
+\end{document}
