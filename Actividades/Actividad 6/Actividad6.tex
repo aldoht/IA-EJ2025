@@ -1,10 +1,28 @@
-\documentclass{article}
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[letterpaper]{geometry}
+\geometry{top=1.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
 \usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\pagestyle{fancy}
+\fancypagestyle{plain}{}
+\fancyhf{}
+\lfoot[]{Inteligencia Artificial}
+\rfoot[]{Enero - Junio 2025}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+\usepackage{amsmath}
+\title{Laboratorio de Matrices}
+\author{Aldo Hernández}
+\date{Febrero 2025}
 
 \begin{document}
+\maketitle
+
 Para usar el método de cofactores (o expansión de Laplace), es necesario seleccionar una fila o columna cualquiera de una matriz cuadrada $A$ de orden $n$ para la cual se aplicará la siguiente fórmula
 
-\begin{equation}
+\begin{equation*}
     det(A_{nxn})
     =
     \begin{vmatrix}
@@ -15,7 +33,7 @@ Para usar el método de cofactores (o expansión de Laplace), es necesario selec
     \end{vmatrix}
     =
     \sum_{j=1}^{n}(-1)^{i+j}a_{i,j}m_{i,j}
-\end{equation}
+\end{equation*}
 
 donde $a_{i,j}$ es el elemento en la fila $i$ y columna $j$ de la matriz $A$ y $m_{i,j}$ es el determinante de la menor obtenida al eliminar la fila $i$ y columna $j$ de $A$. Este es el caso al seleccionar una fila determinada $i$, pero si en su lugar se quisiera usar una columna $j$, basta con hacer la sumatoria desde $i=1$ hasta $n$.
 
@@ -23,7 +41,7 @@ donde $a_{i,j}$ es el elemento en la fila $i$ y columna $j$ de la matriz $A$ y $
 
 Para utilizar la regla de Sarrus (en el caso de una matriz de orden 3) es requerido copiar las primeras dos columnas de la matriz (de izquierda a derecha) en el lado derecho de la misma. Posteriormente se sumará el producto de los elementos de cada diagonal descendente de "longitud tres" y se restará dicho producto pero de las diagonales ascendentes, de esta manera:
 
-\begin{equation}
+\begin{equation*}
     \begin{aligned}
         \left(
         \begin{matrix}
@@ -41,12 +59,11 @@ Para utilizar la regla de Sarrus (en el caso de una matriz de orden 3) es requer
         &= a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} \\
         & - a_{13}a_{22}a_{31} - a_{11}a_{23}a_{32} - a_{12}a_{21}a_{33}
     \end{aligned}
-\end{equation}
-
+\end{equation*}
 
 Para el caso de una matriz de orden 4, podemos intentar copiando las primeras tres columnas de la matriz y seguir la misma regla de la suma y resta de diagonales
 
-\begin{equation}
+\begin{equation*}
     \begin{aligned}
         \left(
         \begin{matrix}
@@ -68,11 +85,13 @@ Para el caso de una matriz de orden 4, podemos intentar copiando las primeras tr
         & - a_{14}a_{23}a_{32}a_{41} - a_{11}a_{24}a_{33}a_{42} \\
         & - a_{12}a_{21}a_{34}a_{43} - a_{13}a_{22}a_{31}a_{44}
     \end{aligned}
-\end{equation}
+\end{equation*}
+
+\newpage
 
 Ahora, comprobaremos usando el método de cofactores
 
-\begin{equation}
+\begin{equation*}
     \begin{aligned}
         \left|
         \begin{matrix}
@@ -125,43 +144,112 @@ Ahora, comprobaremos usando el método de cofactores
                     a_{43} & a_{44} \\
                 \end{matrix}
                 \right|
-            \right)
-        - a_{12}
-            \left|
-            \begin{matrix}
-                a_{21} & a_{23} & a_{24} \\
-                a_{31} & a_{33} & a_{34} \\
-                a_{41} & a_{43} & a_{44} \\
-            \end{matrix}
-            \right|
-        \\    
+                -
+                a_{23}
+                \left|
+                \begin{matrix}
+                    a_{32} & a_{34} \\
+                    a_{42} & a_{44} \\
+                \end{matrix}
+                \right|
+                +
+                a_{24}
+                \left|
+                \begin{matrix}
+                    a_{32} & a_{33} \\
+                    a_{42} & a_{43} \\
+                \end{matrix}
+                \right|
+            \right) \\
+        & - a_{12}
+            \left(
+                a_{21}
+                \left|
+                \begin{matrix}
+                    a_{33} & a_{34} \\
+                    a_{43} & a_{44} \\
+                \end{matrix}
+                \right|
+                -
+                a_{23}
+                \left|
+                \begin{matrix}
+                    a_{31} & a_{34} \\
+                    a_{41} & a_{44} \\
+                \end{matrix}
+                \right|
+                +
+                a_{24}
+                \left|
+                \begin{matrix}
+                    a_{31} & a_{33} \\
+                    a_{41} & a_{43} \\
+                \end{matrix}
+                \right|
+            \right) \\  
         & + a_{13}
+        \left(
+            a_{21}
             \left|
-            \begin{matrix}
-                a_{21} & a_{22} & a_{24} \\
-                a_{31} & a_{32} & a_{34} \\
-                a_{41} & a_{42} & a_{44} \\
-            \end{matrix}
-            \right|
-        - a_{14}
+                \begin{matrix}
+                    a_{32} & a_{34} \\
+                    a_{42} & a_{44} \\
+                \end{matrix}
+                \right|
+                -
+                a_{22}
+                \left|
+                \begin{matrix}
+                    a_{31} & a_{34} \\
+                    a_{41} & a_{44} \\
+                \end{matrix}
+                \right|
+                +
+                a_{24}
+                \left|
+                \begin{matrix}
+                    a_{31} & a_{32} \\
+                    a_{41} & a_{42} \\
+                \end{matrix}
+                \right|
+            \right) \\  
+        & - a_{14}
+        \left(
+            a_{21}
             \left|
-            \begin{matrix}
-                a_{21} & a_{22} & a_{23} \\
-                a_{31} & a_{32} & a_{33} \\
-                a_{41} & a_{42} & a_{43} \\
-            \end{matrix}
-            \right|
-        \\
+                \begin{matrix}
+                    a_{32} & a_{33} \\
+                    a_{42} & a_{43} \\
+                \end{matrix}
+                \right|
+                -
+                a_{22}
+                \left|
+                \begin{matrix}
+                    a_{31} & a_{33} \\
+                    a_{41} & a_{43} \\
+                \end{matrix}
+                \right|
+                +
+                a_{23}
+                \left|
+                \begin{matrix}
+                    a_{31} & a_{32} \\
+                    a_{41} & a_{42} \\
+                \end{matrix}
+                \right|
+            \right) \\  
     \end{aligned}
-\end{equation}
+\end{equation*}
 
-Podemos observar que estos no son iguales, por lo que la regla de Sarrus no siempre es válida para determinantes de orden distinto a 3, aunque podemos pensar en algún caso especial; supongamos que a = ..., etc., entonces: 
+Podemos observar que estos no son iguales sin necesidad de expandir completamente la expresión, por lo que la regla de Sarrus no siempre es válida para determinantes de orden distinto a 3.
 
-
-En resumen, el método de cofactores es aplicable para obtener el determinante de cualquier matriz cuadrada, a diferencia de la regla de Sarrus que en realidad sólo es un caso especial de la regla de Leibniz y no siempre es válida para matrices de orden distinto a tres.
+En resumen, el método de cofactores es aplicable para obtener el determinante de cualquier matriz cuadrada, a diferencia de la regla de Sarrus que en realidad sólo es una regla mnemotécnica de un caso especial de la regla de Leibniz y no siempre es válida para matrices de orden distinto a tres.
 
 Respondiendo a las preguntas del laboratorio:
-1. No es posible aplicar el método de la lluvia para cualquier matriz 4x4, aunque puede ser aplicable si satisface que:
+\begin{enumerate}
+    \item No es posible aplicar el método de la lluvia para cualquier matriz 4x4 ya que es un caso especial de la regla de Leibniz para matrices 3x3.
+    \item No es posible porque al usar la regla de Leibniz, hay que realizar más operaciones que no son contempladas en el método de la lluvia. En cambio, recomendaría usar la expansión de Laplace ya que es como una función recursiva y si bien puede llegar a ser un poco tediosa, te asegura una respuesta correcta para obtener el determinante de cualquier matriz cuadrada de cualquier orden.
+\end{enumerate}
 
-2. No es posible ya que 
 \end{document}
