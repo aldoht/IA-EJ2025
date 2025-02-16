@@ -1,0 +1,169 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[letterpaper]{geometry}
+\geometry{top=1.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\pagestyle{fancy}
+\fancypagestyle{plain}{}
+\fancyhf{}
+\lfoot[]{Inteligencia Artificial}
+\rfoot[]{Enero - Junio 2025}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+\usepackage{amsmath,amssymb}
+\title{Laboratorio de Probabilidad y Estadística}
+\author{Aldo Hernández}
+\date{Febrero 2025}
+
+\begin{document}
+\maketitle
+
+\section{Tipos de datos y Medidas de tendencia central}
+\begin{enumerate}
+    \item Debido a que el nombre y el área de trabajo no tienen una representación numérica, se considera que son variables cualitativas; por otra parte, la edad sí puede ser representada con números y por ello es una variable cuantitativa.
+    \item Calculando la media, mediana y moda de la edad:
+    \begin{itemize}
+        \item Usamos la fórmula para la media aritmética
+        \begin{equation*}
+            \bar{x} = \sum_{i = 1}^{n} \frac{x_{i}}{n} = \frac{25+30+40+35+28+50+45+38+33+27}{10} = \frac{351}{10} = 35.1
+        \end{equation*}
+        \item Debido a que la cantidad de datos es par, la mediana se consigue al calcular la media de los dos valores centrales
+        \begin{equation*}
+            \tilde{x} = \frac{33+35}{2} = \frac{68}{2} = 34
+        \end{equation*}
+        \item Como no hay ninguna edad que se repita, el conjunto de datos es amodal.
+        \begin{equation*}
+            \hat{x} \nexists 
+        \end{equation*}
+    \end{itemize}
+    \item Con estas medidas de tendencia central, podemos saber que no hay empleados con la misma edad (moda), la mitad de los empleados son menores a 34 años (mediana) y la edad promedio de los empleados es de 35 años (mediana).
+\end{enumerate}
+
+\newpage
+
+\section{Medidas de dispersión}
+\begin{enumerate}
+    \item Para obtener la varianza, primero hay que conocer la media, esto es
+    \begin{equation*}
+        \bar{x} = \sum_{i = 1}^{n} \frac{x_{i}}{n} = \frac{70+85+90+95+88+92+75+80}{8} = \frac{675}{8} = 84.375
+    \end{equation*}
+    Entonces, calculamos la varianza
+    \begin{equation*}
+        s^{2} = \frac{\sum_{i = 1}^{n} (x-\bar{x})^{2}}{n-1} = \frac{60.903}{7} = 8.7
+    \end{equation*}
+    Posteriormente encontramos la desviación estándar
+    \begin{equation*}
+        s = \sqrt{s^{2}} = \sqrt{8.7} = 2.95
+    \end{equation*}
+    \item Gracias a esta información, podemos concluir que los datos están a una distancia promedio de 2.95 unidades de su media.
+\end{enumerate}
+
+\section{Probabilidad y Teorema de Bayes}
+Para conocer la probabilidad de que al elegir un empleado al azar sea programador sabiendo que tiene conocimientos de Inteligencia Artificial, usamos el Teorema de Bayes que nos dice la probabilidad de un evento sabiendo la ocurrencia de otro. Empezamos definiendo nuestros eventos A y B junto con algunas probabilidades de interés
+\begin{itemize}
+    \item $ A \rightarrow $ Al elegir un empleado al azar, que sea programador.
+    \item $ B \rightarrow $ Al elegir un empleado al azar, que sea diseñador.
+    \item $ C \rightarrow $ Al elegir un empleado al azar, que tenga conocimientos de Inteligencia Artificial.
+    \item $ P(A) = 60\% $
+    \item $ P(B) = 40\% $
+    \item $ P(C/A) = 70\% $
+    \item $ P(C/B) = 30\% $
+\end{itemize}
+Para calcular $ P(C) $ tenemos que usar el Teorema de Probabilidad Total ya que todos los empleados o son programadores o son diseñadores, y además cada empleado o sabe de Inteligencia Artificial o no tiene conocimientos sobre ello, por lo que nuestro conjunto para el evento $ C $ está compuesto por dos grupos de empleados: programadores que saben de IA y diseñadores que saben de IA
+\begin{equation*}
+    P(C) = P(A)P(A \cap C) + P(B)P(B \cap C) = 42\% + 12\% = 54\%
+\end{equation*}
+
+\newpage
+
+Entonces podemos usar el Teorema de Bayes para conocer la probabilidad de que el empleado sea programador dado que tiene conocimientos de Inteligencia Artificial
+
+\begin{equation*}
+    P(A/C) = \frac{P(C/A)P(A)}{P(C)} = \frac{70\% \cdot 60\%}{54\%} = 77.78\%
+\end{equation*}
+
+\section{Distribuciones de Probabilidad}
+Según la información del problema, podemos deducir la función de distribución de probabilidad para la cantidad de defectos por lote
+\begin{equation*}
+    f(x) = \frac{3^{x}e^{-3}}{x!}; x = 0, 1, 2, ...
+\end{equation*}
+\begin{enumerate}
+    \item Para calcular la probabilidad de que un lote tenga exactamente dos defectos, evaluamos $ x = 2 $ en la función
+    \begin{equation*}
+        f(2) = \frac{3^{2}e^{-3}}{2!} = \frac{9e^{-3}}{2} = 0.224 = 22.4\%
+    \end{equation*}
+    \item Para obtener la probabilidad de que un lote tenga al menos un defecto, usaremos el complemento de nuestro evento de interés, esto es que encontraremos la probabilidad de que tenga exactamente ningún defecto y se la restaremos a la unidad
+    \begin{equation*}
+        \begin{aligned}
+            P
+            & = 1 - \bar{P} \\
+            & = 1 - f(0) \\
+            & = 1 - \frac{3^{0}e^{-3}}{0!} \\
+            & = 1 - e^{-3} \\
+        \end{aligned}
+    \end{equation*}
+    \begin{equation*}
+        \therefore P = 0.9502 = 95.02\%
+    \end{equation*}
+\end{enumerate}
+
+\newpage
+
+\section{Funciones de densidad y distribución acumulativa}
+Deducimos la función de distribución normal
+\begin{equation*}
+    f(x) = \frac{1}{10\sqrt{2\pi}}e^-{\frac{(x-50)^{2}}{200}}; -\infty < x < \infty 
+\end{equation*}
+Posteriormente normalizamos la variable aleatoria
+\begin{equation*}
+    z = \frac{x-50}{10}
+\end{equation*}
+\begin{enumerate}
+    \item Para calcular la probabilidad de que $x$ sea menor que 45 usaremos la siguiente integral
+    \begin{equation*}
+        \begin{aligned}
+            \int_{-\infty}^{45} f(x) \,dx 
+            & = \frac{1}{10\sqrt{2\pi}} \int_{-\infty}^{45} e^-{\frac{(x-50)^{2}}{200}} \,dx \\
+            & = 0.309 \\
+            & = 30.9\%
+        \end{aligned}
+    \end{equation*}
+    \item Para calcular la probabilidad de que $x$ esté entre 40 y 60 usaremos la siguiente integral
+    \begin{equation*}
+        \begin{aligned}
+            \int_{40}^{60} f(x) \,dx 
+            & = \frac{1}{10\sqrt{2\pi}} \int_{40}^{60} e^-{\frac{(x-50)^{2}}{200}} \,dx \\
+            & = 0.683 \\
+            & = 68.3\%
+        \end{aligned}
+    \end{equation*}
+    \item Para comprobar los resultados, usaremos la variable normalizada $ z $
+    \begin{equation*}
+        \begin{aligned}
+            P(x < 45)
+            & = P(\frac{x-50}{10} < \frac{45-50}{10}) \\
+            & = P(z < \frac{45-50}{10}) \\
+            & = 0.309 \\
+            & = 30.9\%
+        \end{aligned}
+    \end{equation*}
+    \begin{equation*}
+        \begin{aligned}
+            P(40 < x < 60)
+            & = P(\frac{40-50}{10} < \frac{x-50}{10} < \frac{60-50}{10}) \\
+            & = P(-1 < z < 1) \\
+            & = 1 - 2P(z > 1) \\
+            & = 1 - 2(0.159) \\
+            & = 0.682 \\
+            & = 68.2\%
+        \end{aligned}
+    \end{equation*}
+\end{enumerate}
+
+\newpage
+
+\section{Probabilidad condicional}
+
+\end{document}
