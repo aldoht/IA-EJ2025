@@ -23,6 +23,7 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 
 ### Enero - Febrero
 - [Actividad 6](./Actividades/Actividad%206/Actividad6.pdf)
+- [Actividad 7](./Actividades/Actividad%207/Actividad7.pdf)
 
 ### Marzo
 
