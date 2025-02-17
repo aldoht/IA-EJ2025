@@ -165,5 +165,130 @@ Posteriormente normalizamos la variable aleatoria
 \newpage
 
 \section{Probabilidad condicional}
+\begin{enumerate}
+    \item Empecemos definiendo los siguientes eventos junto con sus probabilidades
+    \begin{itemize}
+        \item $A \rightarrow $ Al tirar el dado, el resultado sea par.
+        \item $B \rightarrow $ Al tirar el dado, el resultado sea impar.
+        \item $P(A) = \frac{1}{2}$
+        \item $P(B) = \frac{1}{2}$
+    \end{itemize}
+    Observamos que los eventos son mutuamente excluyentes, por lo que la ocurrencia de uno no afecta al otro, entonces la probabilidad de que en la segunda tirada salga un número par es del 50\%.
+    \item La primera tirada de un dado no influye en el resultado de una segunda tirada.
+\end{enumerate}
+
+\section{Distribución Binomial}
+Primero deducimos la función de probabilidad
+\begin{equation*}
+    f(x) = 
+    \left(
+        \begin{matrix}
+            5 \\
+            x
+        \end{matrix}
+    \right)
+    \left(\frac{1}{4}\right)^{x}\left(\frac{3}{4}\right)^{5-x};x=0, 1, 2, ..., 5
+\end{equation*}
+\begin{enumerate}
+    \item Evaluamos $f$ en 3
+    \begin{equation*}
+        \begin{aligned}
+            f(3)
+            & = 
+            \left(
+                \begin{matrix}
+                    5 \\
+                    3
+                \end{matrix}
+            \right)
+            \left(\frac{1}{4}\right)^{3}\left(\frac{3}{4}\right)^{2} \\
+            & = (10)(0.015625)(0.5625) \\
+            & = 0.08789 \\
+            & = 8.79\%
+        \end{aligned}
+    \end{equation*}
+    \item Para calcular la probabilidad, usamos el evento complementario que es el caso en el que no acierte ninguna respuesta
+    \begin{equation*}
+        \begin{aligned}
+            P
+            & = 1 - f(0) \\
+            & = 1 - 
+            \left(
+                \begin{matrix}
+                    5 \\
+                    0
+                \end{matrix}
+            \right)
+            \left(\frac{1}{4}\right)^{0}\left(\frac{3}{4}\right)^{5} \\
+            & = (1)(1)(0.2373) \\
+            & = 0.2373 \\
+            & = 23.73\%
+        \end{aligned}
+    \end{equation*}
+\end{enumerate}
+
+\newpage
+
+\section{Regla de Laplace}
+\begin{enumerate}
+    \item La probabilidad de obtener una bola roja es de $\frac{5}{12} = 41.67\%$ ya que hay 5 bolas rojas y un total de 12 bolas.
+    \item Por lo mismo, la probabilidad de sacar una bola azul es de $\frac{7}{12}$ y luego volver a sacar una bola azul sin regresar la anterior es de $\frac{6}{11}$, entonces la probabilidad P de este evento es
+    \begin{equation*}
+        \begin{aligned}
+            P = 
+            & \left(
+                \frac{7}{12}
+            \right)
+            \left(
+                \frac{6}{11}
+            \right) \\
+            & = (0.5833)(0.5454) \\
+            & = 0.31816 \\
+            & = 31.82\%
+        \end{aligned}
+    \end{equation*}
+\end{enumerate}
+
+\section{Esperanza Matemática}
+\begin{enumerate}
+    \item Calculamos la esperanza matemática de la siguiente manera
+    \begin{equation*}
+        \begin{aligned}
+            E(x)
+            & = (1000-10)(0.01) - 10(0.99) \\
+            & = 9.9 - 9.9 \\
+            & = 0
+        \end{aligned}
+    \end{equation*}
+    \item En promedio, la persona no ganará ni perderá dinero a largo plazo.
+\end{enumerate}
+
+\section{Ley de los grandes números}
+Observamos que el número de caras es una variable aleatoria que pertenece a una distribución binomial
+\begin{equation*}
+    \begin{aligned}
+        f(x)
+        & =
+        \left(
+            \begin{matrix}
+                1000 \\
+                x
+            \end{matrix}
+        \right)
+        \left(\frac{1}{2}\right)^{x}\left(\frac{1}{2}\right)^{1000-x} \\
+        & =
+        \left(
+            \begin{matrix}
+                1000 \\
+                x
+            \end{matrix}
+        \right)
+        \left(\frac{1}{2}\right)^{1000} \\
+    \end{aligned}
+\end{equation*}
+\begin{enumerate}
+    \item Esta distribución tiene un valor esperado $E(x) = n\theta = 1000(0.5) = 500$.
+    \item Debido a que la cantidad de repeticiones del evento es muy grande, las frecuencias relativas se acerca más al valor esperado (o teórico).
+\end{enumerate}
 
 \end{document}
