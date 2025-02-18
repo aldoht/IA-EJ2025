@@ -33,9 +33,9 @@
         \begin{equation*}
             \tilde{x} = \frac{33+35}{2} = \frac{68}{2} = 34
         \end{equation*}
-        \item Como no hay ninguna edad que se repita, el conjunto de datos es amodal.
+        \item Como no hay una edad única que se repita, el conjunto de datos es amodal.
         \begin{equation*}
-            \hat{x} \nexists 
+            \hat{x} = 25, 30, 40, 35, 28, 50, 45, 38, 33, 27
         \end{equation*}
     \end{itemize}
     \item Con estas medidas de tendencia central, podemos saber que no hay empleados con la misma edad (moda), la mitad de los empleados son menores a 34 años (mediana) y la edad promedio de los empleados es de 35 años (mediana).
@@ -51,13 +51,13 @@
     \end{equation*}
     Entonces, calculamos la varianza
     \begin{equation*}
-        s^{2} = \frac{\sum_{i = 1}^{n} (x-\bar{x})^{2}}{n-1} = \frac{60.903}{7} = 8.7
+        s^{2} = \frac{\sum_{i = 1}^{n} (x-\bar{x})^{2}}{n-1} = \frac{529.83}{7} = 75.69
     \end{equation*}
     Posteriormente encontramos la desviación estándar
     \begin{equation*}
-        s = \sqrt{s^{2}} = \sqrt{8.7} = 2.95
+        s = \sqrt{s^{2}} = \sqrt{75.69} = 8.7
     \end{equation*}
-    \item Gracias a esta información, podemos concluir que los datos están a una distancia promedio de 2.95 unidades de su media.
+    \item Gracias a esta información, podemos concluir que los datos están a una distancia promedio de 8.7 unidades de su media. Además, el 68.2\% de los datos están en el rango de [75.675, 93.075].
 \end{enumerate}
 
 \section{Probabilidad y Teorema de Bayes}
@@ -168,12 +168,16 @@ Posteriormente normalizamos la variable aleatoria
 \begin{enumerate}
     \item Empecemos definiendo los siguientes eventos junto con sus probabilidades
     \begin{itemize}
-        \item $A \rightarrow $ Al tirar el dado, el resultado sea par.
-        \item $B \rightarrow $ Al tirar el dado, el resultado sea impar.
-        \item $P(A) = \frac{1}{2}$
-        \item $P(B) = \frac{1}{2}$
+        \item $A \rightarrow $ Al tirar el dado en la primera tirada, el resultado sea par.
+        \item $B \rightarrow $ Al tirar el dado en la primera tirada, el resultado sea impar.
+        \item $C \rightarrow $ Al tirar el dado en la segunda tirada, el resultado sea par.
+        \item $D \rightarrow $ Al tirar el dado en la segunda tirada, el resultado sea impar.
+        \item $P(A) = P(B) = P(C) = P(D) = \frac{1}{2}$
     \end{itemize}
-    Observamos que los eventos son mutuamente excluyentes, por lo que la ocurrencia de uno no afecta al otro, entonces la probabilidad de que en la segunda tirada salga un número par es del 50\%.
+    Observamos que los eventos de interés (B y C) son independientes, es decir, la ocurrencia de uno no afecta el suceso del otro, entonces
+    \begin{equation*}
+        P(C/B) = \frac{P(C \cap B)}{P(B)} = \frac{P(C)P(B)}{P(B)} = P(C) = \frac{1}{2} = 50\%
+    \end{equation*}
     \item La primera tirada de un dado no influye en el resultado de una segunda tirada.
 \end{enumerate}
 
