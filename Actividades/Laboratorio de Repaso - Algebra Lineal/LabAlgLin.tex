@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
+\usepackage[skip=10pt plus1pt, indent=40pt]{parskip}
 \pagestyle{fancy}
 \fancypagestyle{plain}{}
 \fancyhf{}
@@ -77,47 +78,33 @@
             \end{pmatrix}
         \end{aligned}
     \end{equation*}
-    % \item Sea $A$ una matriz cuadrada cualquiera de orden $n$, sea B otra matriz cuadrada no necesariamente igual que $A$ de orden $n$ y sea $C = AB$, tenemos que
-    % \begin{equation}
-    %     \det(A) = 
-    %     \begin{vmatrix}
-    %         a_{11} & \cdots & a_{1n} \\
-    %         \vdots & \ddots & \vdots \\
-    %         a_{n1} & \cdots & a_{nn}
-    %     \end{vmatrix} =
-    %     \sum_{j=1}^{n} (-1)^{1+j}a_{1,j}A_{1,j}
-    % \end{equation}
-    % \begin{equation}
-    %     \det(B) = 
-    %     \begin{vmatrix}
-    %         b_{11} & \cdots & b_{1n} \\
-    %         \vdots & \ddots & \vdots \\
-    %         b_{n1} & \cdots & b_{nn}
-    %     \end{vmatrix} =
-    %     \sum_{k=1}^{n} (-1)^{1+k}b_{1,k}B_{1,k}
-    % \end{equation}
-    % \begin{equation}
-    %     \det(C) = 
-    %     \begin{vmatrix}
-    %         a_{11}b_{11} + \cdots + a_{1n}b_{n1} & \cdots & a_{11}b_{1n} + \cdots + a_{1n}b_{nn} \\
-    %         \vdots & \ddots & \vdots \\
-    %         a_{n1}b_{11} + \cdots + a_{nn}b_{n1} & \cdots & a_{n1}b_{1n} + \cdots + a_{nn}b_{nn}
-    %     \end{vmatrix} =
-    %     \sum_{m=1}^{n} (-1)^{1+m}c_{1,m}C_{1,m}
-    % \end{equation}
 
-    % \newpage
+    \newpage
 
-    % Entonces si multiplicamos el determinante de $A$ y $B$ (ecuaciones 1 y 2) obtenemos lo siguiente
-    
-    % \begin{equation*}
-    %     \begin{aligned}
-    %         \sum_{j=1}^{n} (-1)^{1+j}a_{1,j}A_{1,j}
-    %         \sum_{k=1}^{n} (-1)^{1+k}b_{1,k}B_{1,k}
-    %         & = 
-    %         \sum_{j=1}^{n} \sum_{k=1}^{n} a_{1,j}b_{1,k}A_{1,j}B_{1,k}
-    %     \end{aligned}
-    % \end{equation*}
+    \item Sean $A$ y $B$ dos matrices de orden $n$ no necesariamente iguales, entonces si alguna de ellas no es invertible (no tiene inversa) podemos afirmar que su determinante es cero
+    \begin{equation*}
+        \Rightarrow \det AB = 0
+    \end{equation*}
+    Además se cumpliría la proposición
+    \begin{equation*}
+        \det A \cdot \det B = 0
+    \end{equation*}
+    En caso de que ambas matrices sean invertibles, entonces tienen inversa y pueden escribirse como productos de matrices elementales (matrices obtenidas al realizar operaciones elementales sobre una matriz identidad)
+    \begin{equation*}
+        A = E_{1} \cdot E_{2} \cdots E_{n}
+    \end{equation*}
+    \begin{equation*}
+        B = F_{1} \cdot F_{2} \cdots F_{m}
+    \end{equation*}
+    \begin{equation*}
+        \begin{aligned}
+            \Rightarrow \det AB
+            & = \det (E_{1} \cdot E_{2} \cdots E_{n} \cdots F_{1} \cdot F_{2} \cdots F_{m}) \\
+            & = \det(E_{1}) \cdot \det(E_{2}) \cdots \det(E_{n}) \cdot \det(F_{1}) \cdot \det(F_{2}) \cdots \det(F_{m}) \\
+            & = \det(E_{1} \cdot E_{2} \cdots E_{n}) \cdot \det(F_{1} \cdot F_{2} \cdots F_{m}) \\
+            & = \det(A) \cdot \det(B) \blacksquare 
+        \end{aligned}
+    \end{equation*}
 
 \end{enumerate}
 
@@ -125,7 +112,63 @@
 
 \section{Sistemas de ecuaciones lineales}
 \begin{enumerate}
-    \item Pendiente (Gauss-Seidel?? zzz)
+    \item Despejamos una variable de cada ecuación del sistema, de manera que tenemos
+    
+    \begin{equation*}
+        x = \frac{7+y-z}{4}, y = \frac{1+2x+2z}{4}, z = \frac{5-x+y}{3}
+    \end{equation*}
+    
+    Tomamos como solución inicial $x=y=z=0$
+    \begin{itemize}
+        \item Iteración 1
+        \begin{equation*}
+            \begin{aligned}
+                x = 1.75 \\
+                y = 1.13 \\
+                z = 1.46
+            \end{aligned}
+        \end{equation*}
+        \item Iteración 2
+        \begin{equation*}
+            \begin{aligned}
+                x & = \frac{7+1.13-1.46}{4} = 1.67 \\
+                y & = \frac{1+3.34+2.92}{4} = 1.82 \\
+                z & = \frac{5-1.67+1.82}{3} = 1.72
+            \end{aligned}
+        \end{equation*}
+        \item Iteración 3
+        \begin{equation*}
+            \begin{aligned}
+                x & = \frac{7+1.82-1.72}{4} = 1.78 \\
+                y & = \frac{1+3.56+3.44}{4} = 2 \\
+                z & = \frac{5-1.78+2}{3} = 1.74
+            \end{aligned}
+        \end{equation*}
+        \item Iteración 4
+        \begin{equation*}
+            \begin{aligned}
+                x & = \frac{7+2-1.74}{4} = 1.82 \\
+                y & = \frac{1+3.64+3.48}{4} = 2.03 \\
+                z & = \frac{5-1.82+2.03}{3} = 1.74
+            \end{aligned}
+        \end{equation*}
+        \item Iteración 5
+        \begin{equation*}
+            \begin{aligned}
+                x & = \frac{7+2.03-1.74}{4} = 1.82 \\
+                y & = \frac{1+3.64+3.48}{4} = 2.03 \\
+                z & = \frac{5-1.82+2.03}{3} = 1.74
+            \end{aligned}
+        \end{equation*}
+    \end{itemize}
+    Observamos que llegamos a un error aproximado cercano al $0\%$, entonces concluimos como resultado lo siguiente
+    \begin{equation*}
+        \begin{aligned}
+            x = 1.82 \\
+            y = 2.03 \\
+            z = 1.74
+        \end{aligned}
+    \end{equation*}
     \item Para el sistema homogéneo, podemos definir las siguientes matrices
     \begin{equation*}
         A =
@@ -318,10 +361,180 @@
 
 \section{Aplicaciones en IA: reducción de dimensionalidad}
 \begin{enumerate}
-    \item PCA
-    \item SVD
-    \item DL w NN
-    \item VS in AI
+    \item El Principal Component Analysis busca reducir el número de dimensiones en conjuntos de datos muy largos a componentes principales que mantengan la mayor cantidad de información original posible. Esto lo hace transformando las variables posiblemente correlacionadas en un conjunto más pequeño de variables no correlacionadas llamadas componentes principales. Básicamente, reduce el número de variables aleatorias con las que vamos a trabajar sin deshacernos de la información original más importante. \par
+    Estos componentes son combinaciones lineales de las variables originales que tienen la mayor varianza a comparación de otras combinaciones lineales. \par
+    Esta técnica estadística transforma el conjunto de datos original en un nuevo sistema de coordenadas estructurado por los componentes principales, los eigenvalores y eigenvectores de la matriz de covarianza permiten el análisis de estas transformaciones lineales. \par
+    Por ejemplo, suponga que tiene un conjunto de datos y lo ha relacionado con múltiples características, resultando en una gráfica multidimensional de comparaciones de todas las características entre ellas mismas para reconocer patrones. Entonces, los eigenvectores otorgan la dirección de varianza en dicha gráfica y los eigenvalores denotan la importancia de esta dirección (a mayor valor, más crítico). \par
+    Un caso práctico sería suponer que tenemos un conjunto de información muy grande acerca de algunos modelos de carros y nos interesa saber las relaciones que hay entre todas sus características, después de definirlas todas, estandarizamos todas nuestras variables aleatorias para que todas usen la misma escala. Después, creamos la matriz de covarianza entre todas las variables aleatorias para saber qué tan correlacionadas están entre ellas (en pares) y según los signos de los resultados podremos saber si las combinaciones están correlacionadas o no. Posteriormente obtenemos los eigenvectores (los componentes principales) y eigenvalores de la matriz, y ordenamos los vectores según sus valores propios. Seguido de ello seleccionamos los componentes principales con los que vamos a quedarnos, generalmente son aquellos con los eigenvalores más altos. Finalmente transformamos esta información en un nuevo sistema coordenado definido por los componentes principales, esto es proyectar los vectores de características creados por los eigenvectores de la matriz de covarianza en nuevos ejes definidos por los componentes principales, creando nueva información que captura la mayor parte de la original pero con menos dimensiones. 
+    \newpage
+    \item Buscamos las matrices $U_{2x2}$, $D_{2x2}$ y $V_{2x2}$ tales que se cumpla que
+    \begin{equation*}
+        \begin{pmatrix}
+            3 & 1 \\
+            2 & 2
+        \end{pmatrix}
+        = UDV^{T}
+    \end{equation*}
+    Definimos
+    \begin{equation*}
+        H = \begin{pmatrix}
+            3 & 1 \\
+            2 & 2
+        \end{pmatrix},
+        H^{T} = \begin{pmatrix}
+            3 & 2 \\
+            1 & 2
+        \end{pmatrix}
+    \end{equation*}
+    Entonces
+    \begin{equation*}
+        \begin{pmatrix}
+            3 & 1 \\
+            2 & 2
+        \end{pmatrix}
+        \begin{pmatrix}
+            3 & 2 \\
+            1 & 2
+        \end{pmatrix}
+        = \begin{pmatrix}
+            10 & 8 \\
+            8 & 8
+        \end{pmatrix},
+        \begin{pmatrix}
+            3 & 2 \\
+            1 & 2
+        \end{pmatrix}
+        \begin{pmatrix}
+            3 & 1 \\
+            2 & 2
+        \end{pmatrix}
+        = \begin{pmatrix}
+            13 & 7 \\
+            7 & 5
+        \end{pmatrix}
+    \end{equation*}
+    Encontramos los eigenvalores y eigenvectores de $AA^{T}$ y $A^{T}A$
+    \begin{equation*}
+        \begin{aligned}
+            |AA^{T} - \lambda I| = 0
+            & =
+            \begin{vmatrix}
+                10 - \lambda & 8 \\
+                8 & 8 - \lambda
+            \end{vmatrix} \\
+            & = (10-\lambda)(8-\lambda) - 64 \\
+            & = 80 - 18\lambda + \lambda ^{2} - 64 \\
+            & = \lambda ^{2} - 18\lambda + 16 \\
+            & \Rightarrow \lambda_{1} = 9+\sqrt{65}, \lambda_{2} = 9-\sqrt{65} \\
+            & \Rightarrow v_{1} = \begin{pmatrix}
+                1.133 \\
+                1
+            \end{pmatrix},
+            v_{2} = \begin{pmatrix}
+                -0.883 \\
+                1
+            \end{pmatrix}
+        \end{aligned}
+    \end{equation*}
+    \begin{equation*} 
+        \begin{aligned}
+            |A^{T}A - \lambda I| = 0
+            & =
+            \begin{vmatrix}
+                13 - \lambda & 7 \\
+                7 & 5 - \lambda
+            \end{vmatrix} \\
+            & = (13-\lambda)(5-\lambda) - 49 \\
+            & = 65 - 18\lambda + \lambda ^{2} - 49 \\
+            & = \lambda ^{2} - 18\lambda + 16 \\
+            & \Rightarrow \lambda_{1} = 9+\sqrt{65}, \lambda_{2} = 9-\sqrt{65} \\
+            & \Rightarrow v_{1} = \begin{pmatrix}
+                1.723 \\
+                1
+            \end{pmatrix},
+            v_{2} = \begin{pmatrix}
+                -0.580 \\
+                1
+            \end{pmatrix}
+        \end{aligned}
+    \end{equation*}
+    Al normalizar cada vector característico tenemos que $L_{1} = 1.511$, $L_{2} = 1.334$, $L_{3} = 1.992$ y $L_{4} = 1.156$, entonces
+    \begin{equation*}
+        u_{1} = \begin{pmatrix}
+            0.750 \\
+            0.662
+        \end{pmatrix},
+        u_{2} = \begin{pmatrix}
+            -0.662 \\
+            0.750
+        \end{pmatrix}
+    \end{equation*}
+    \begin{equation*}
+        v_{1} = \begin{pmatrix}
+            0.865 \\
+            0.502
+        \end{pmatrix},
+        v_{2} = \begin{pmatrix}
+            -0.502 \\
+            0.865
+        \end{pmatrix}
+    \end{equation*}
+    Por tanto tenemos que
+    \begin{equation*}
+        D = \begin{pmatrix}
+            \sqrt{9+\sqrt{65}} & 0 \\
+            0 & \sqrt{9-\sqrt{65}}
+        \end{pmatrix}
+        = \begin{pmatrix}
+            4.130 & 0 \\
+            0 & 0.968
+        \end{pmatrix}
+    \end{equation*}
+    \begin{equation*}
+        U = \begin{pmatrix}
+            u_{1} & u_{2}
+        \end{pmatrix}
+        = \begin{pmatrix}
+            0.750 & -0.662 \\
+            0.662 & 0.750
+        \end{pmatrix}
+    \end{equation*}
+    \begin{equation*}
+        V = \begin{pmatrix}
+            v_{1} & v_{2}
+        \end{pmatrix}
+        = \begin{pmatrix}
+            0.865 & -0.502 \\
+            0.502 & 0.865
+        \end{pmatrix}
+    \end{equation*}
+    Finalmente concluimos la descomposición de la forma $H=UDV^{T}$
+    \begin{equation*}
+        \begin{pmatrix}
+            3 & 1 \\
+            2 & 2
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            0.750 & -0.662 \\
+            0.662 & 0.750
+        \end{pmatrix}
+        \begin{pmatrix}
+            4.130 & 0 \\
+            0 & 0.968
+        \end{pmatrix}
+        \begin{pmatrix}
+            0.865 & 0.502 \\
+            -0.502 & 0.865
+        \end{pmatrix}
+    \end{equation*}
+    \item El álgebra lineal es fundamental para el aprendizaje profundo en redes neuronales por diversas razones, por ejemplo: 
+    \begin{itemize}
+        \item La forma de representación de los datos son vectores y matrices, al igual que las entradas y salidas de las redes neuronales.
+        \item En cada capa de la red neuronal se realiza una multiplicación de matrices para transformar los datos antes de pasar a la siguiente capa.
+        \item Las técnicas como el PCA o la SVD son útiles para reducir la dimensionalidad de los datos antes de alimentarlos a alguna red neuronal para mejorar la eficiencia del aprendizaje y la generalización de los modelos.
+    \end{itemize}
+    \item Los espacios vectoriales permiten representar, manipular y aprender a partir de datos en IA. A través de transformaciones lineales y reducción de dimensionalidad, los datos son proyectados en un espacio que facilita la captura de patrones y relaciones.
 \end{enumerate}
 
 \end{document}
