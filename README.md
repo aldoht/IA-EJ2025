@@ -78,4 +78,4 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 
 
 ## Bibliografía
-- Russell, S. J., & Norvig, P. (2010). *Artificial intelligence: A modern approach* (3ra ed.). Pearson. ([pdf](https://people.engr.tamu.edu/guni/csce421/files/AI_Russell_Norvig.pdf))
+- Russell, S. J., & Norvig, P. (2010). *Artificial intelligence: A modern approach* (3ra ed.). Pearson. ([pdf](./Libros/Artificial%20Intelligence%20-%20A%20Modern%20Approach%20(3rd%20Edition).pdf))
