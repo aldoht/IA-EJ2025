@@ -44,6 +44,7 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 - [Pandas](https://www.kaggle.com/learn/certification/mnstrr/pandas)
 - [Intermediate Machine Learning](https://www.kaggle.com/learn/certification/mnstrr/intermediate-machine-learning)
 - [Data Visualization](https://www.kaggle.com/learn/certification/mnstrr/data-visualization)
+- [Feature Engineering](https://www.kaggle.com/learn/certification/mnstrr/feature-engineering)
 
 ### IBM (CognitiveClass)
 - [Python 101 for Data Science](https://courses.cognitiveclass.ai/certificates/3ecce9e8f838407dbe48ace645420e0f)
