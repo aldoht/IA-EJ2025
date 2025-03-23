@@ -79,4 +79,11 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 
 
 ## Bibliografía
-- Russell, S. J., & Norvig, P. (2010). *Artificial intelligence: A modern approach* (3ra ed.). Pearson. ([pdf](./Libros/Artificial%20Intelligence%20-%20A%20Modern%20Approach%20(3rd%20Edition).pdf))
+- S. J. Russell, & P. Norvig, *Artificial intelligence: A modern approach*, 3ra ed., Pearson, 2010. ([pdf](./Libros/Artificial%20Intelligence%20-%20A%20Modern%20Approach%20(3rd%20Edition).pdf))
+- G. Lieberman & F. Hillier, *Introducción a la Investigación de Operaciones*, 9na ed., McGraw Hill, 2010. ([pdf](./Libros/Introducción%20a%20la%20Investigación%20de%20Operaciones%20(9na%20ed)%20-%20Hillier%20Lieberman.pdf))
+- J. Demmel, *Applied Numerical Linear Algebra*, SIAM, 1997. ([pdf](./Libros/Applied%20Numerical%20Linear%20Algebra.pdf))
+- P. Olver & C. Shakiban, *Applied Linear Algebra*, 2da Ed., Springer, 2010. ([pdf](./Libros/Applied%20Linear%20Algebra.pdf))
+- G. Golub, C. Van Loan, *Matrix Computations*, 4ta Ed., John Hopkins, 2013. ([pdf](./Libros/Matrix%20Computations.pdf))
+- D. Lay, S. Lay & J. McDonald, *Linear Algebra and its Applications*, 5ta ed., Pearson, 2016. ([pdf](./Libros/Linear%20Algebra%20and%20its%20Applications.pdf))
+- C. Meyer, *Matrix Analysis and Applied Linear Algebra*, SIAM, 2000. ([pdf](./Libros/Matrix%20Analysis%20and%20Applied%20Linear%20Algebra.pdf))
+- J. Bagnato, *Aprende Machine Learning*, 1.5 ed., Leanpub, 2020. ([pdf](./Libros/Aprende%20Machine%20Learning.pdf))
