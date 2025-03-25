@@ -7,7 +7,8 @@ from sklearn import linear_model
 from sklearn.metrics import mean_squared_error, r2_score
 
 data = pd.read_csv('./articulos_ml.csv')
-data.drop(['Title', 'url', 'Elapsed days'], axis=1)
+data.drop(['Title', 'url', 'Elapsed days'], axis=1).hist()
+plt.show()
 
 filtered_data = data[(data['Word count'] <= 3500) & data['# Shares'] <= 80000]
 colors = ['orange', 'blue']
@@ -21,7 +22,9 @@ for index, row in filtered_data.iterrows():
     else:
         assign.append(colors[1])
 
-col_sum = (filtered_data['# of Links'] + filtered_data['# of comments'].fillna(0) + filtered_data['# Images video'])
+col_sum = (filtered_data['# of Links']
+           + filtered_data['# of comments'].fillna(0)
+           + filtered_data['# Images video'])
 dataX2 = pd.DataFrame()
 dataX2['Word count'] = filtered_data['Word count']
 dataX2['suma'] = col_sum
@@ -30,22 +33,26 @@ z_train = filtered_data['# Shares'].values
 regr2 = linear_model.LinearRegression()
 regr2.fit(XY_train, z_train)
 z_pred = regr2.predict(XY_train)
-print(f'Coefficients: {regr2.coef_}. MSE: {round(mean_squared_error(z_train, z_pred), 2)}. Variance score: {round(r2_score(z_train, z_pred), 2)}.')
+print(f'Coefficients: {regr2.coef_}. '
+      f'Intercept: {regr2.intercept_}. '
+      f'MSE: {round(mean_squared_error(z_train, z_pred), 2)}. '
+      f'Variance score: {round(r2_score(z_train, z_pred), 2)}.')
 
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
-xx, yy = np.meshgrid(np.linspace(0, 3500, num=10), np.linspace(0, 60, num=10))
+xx, yy = np.meshgrid(np.linspace(0, 3500, num=10),
+                     np.linspace(0, 60, num=10))
 nuevoX = (regr2.coef_[0] * xx)
 nuevoY = (regr2.coef_[1] * yy)
 z = (nuevoX + nuevoY + regr2.intercept_)
 ax.plot_surface(xx, yy, z, alpha=0.2, cmap='hot')
 ax.scatter(XY_train[:, 0], XY_train[:, 1], z_train, c='blue', s=30)
 ax.scatter(XY_train[:, 0], XY_train[:, 1], z_pred, c='red', s=40)
-ax.view_init(elev=30, azim=65)
-ax.set_xlabel('Cantidad de palabras')
-ax.set_ylabel('Cantidad de enlaces, comentarios e imágenes')
-ax.set_zlabel('Compartidos en redes sociales')
-ax.set_title('Regresión lineal con múltiples variables')
+ax.view_init(elev=30, azim=245)
+ax.set_xlabel('Word count')
+ax.set_ylabel('Number of Links, comments, images, and videos')
+ax.set_zlabel('Number of shares')
+ax.set_title('Multiple Linear Regression')
 plt.show()
 
 print(regr2.predict([[2000, 10+4+6]]))
