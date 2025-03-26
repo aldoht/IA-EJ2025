@@ -81,19 +81,30 @@ These updates constitute the \textbf{batch gradient descent} learning rule for u
 \subsection{Before typing code}
 Before we start the activity, we must download the following \href{http://www.aprendemachinelearning.com/articulos_ml/}{.csv file} \cite{aprendeML} to use the same dataset. Also, we have to import the following Python packages:
 \begin{itemize}
-  \item Numpy
   \item Pandas
   \item Matplotlib
   \item Scikit-learn
 \end{itemize}
 After doing this, we are ready to import all of the needed packages to our Python main file: \par
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=90mm]{2025-03-26-14-16-48.png}
+  \caption{Essential imports and styling.}
+\end{figure}
+
 As the reader can see, we also made some specific configuration for the program plots, such as size (in line 4) and style (in line 5); this may be changed according to the reader's preferences.
 
 \subsection{Data processing}
 Next, we will read the data from the .csv file using pandas to transform it into a dataframe. This is necessary since it will help us to easily remove all the columns that we will not use for the analysis, as shown in the figure: \par
 
-\subsection{Filtering data}
-Now that we have all of our essential data, we need to filter it in order to remove random anomalies in the dataset. In order to do this, we will take a look into the dataset information with the data.describe() method, but only to our two main columns:
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=90mm]{2025-03-26-14-19-30.png}
+  \caption{Importing data and displaying useful information.}
+\end{figure}
+
+Using this information, we can see that the dataset contains 161 rows of data with 8 columns. Also, we can focus our interest in the columns "Word count" and "\# Shares", they will be our input and output for this model since we will try to predict the number of shares based on the word count of an article, as shown in table \ref{col_info}. \par
 
 \begin{table}[!ht]
   \centering
@@ -112,37 +123,66 @@ Now that we have all of our essential data, we need to filter it in order to rem
     \end{tabular}
 \end{table}
 
-As we can see in table \ref{col_info}, there are no null values in the columns, and our values are not very concentrated. Since we can't do really much with this information, we will graph a histogram to see where our data is really concentrated using the hist() method right after dropping the unnecessary columns: \par
+We can also create two histograms to look where is our dataframe more concentrated, as following \par
 
-Thanks to these graphics, we can now filter the data to remove anomalies. To do so, we will simply remove all data with more than 3500 words and data with more than 80000 shares with the following code: \par
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=60mm]{word_count_hist.png}
+  \includegraphics[width=60mm]{nshares_count_hist.png}
+  \caption{Data concentration in both columns.}
+  \label{fig:histograms}
+\end{figure}
 
-We also colored data with orange if they are over the word count mean, or blue otherwise.
+\subsection{Filtering data}
+Now that we have all of our essential data, we need to filter it in order to remove random anomalies in the dataset. \par
 
-\subsection{Creating a new dataframe}
-To create our multiple regression model, we will have to create a new dataframe with the columns that we will use as inputs. In this case, we will keep word count, but the other column will be the sum of links, comments, and images or videos. \par
+Thanks to the histograms shown in Figure \ref{fig:histograms}, we can now filter the data to remove anomalies. To do so, we will simply remove all data with more than 3500 words and data with more than 80000 shares with the following code: \par
 
-We then create our training set as a NumPy array for $x$, $y$, and $z$, which are our 3-tuples $(x_{1}, y_{1}, z_{1})$
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=100mm]{2025-03-26-14-45-21.png}
+  \caption{Filtering and coloring data.}
+\end{figure}
 
-Finally, we create our model and fit it to the training data.
+We also colored data with red if they are over or on the word count mean, or blue otherwise.
 
-The reader may notice that we also print the coefficients $\left\{\beta_{0}, \beta_{1}, \beta_{2}\right\}$ of the linear function used for the model and some metrics to check the effectiveness of the model. These metrics are the \textit{Mean Squared Error}, and the \textit{Variance score}, where in ideal cases the MSE should be low and the variance score near one, which is not the case.
+\subsection{Creating the model}
+After filtering our dataset, all we have left to do is create our linear regression model. For this, we will fit our model---or line---to the dataset and make predictions with the original data. Next, we will output some useful messages: \par
 
-\subsection{Making a 3D graph with Matplotlib.pyplot}
-Finally, we create a 3D plot using our new dataframe. We will start by creating a meshgrid where all of our $x$ and $y$ data will be distributed, and then make all of our plot values of a certain color (blue if from original set, red if it comes from a prediction using the training set). \par
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=90mm]{2025-03-26-14-53-07.png}
+  \caption{Training the linear regression model.}
+  \label{fig:training}
+\end{figure}
 
-The reader may wonder why the plot contains a big 2D plane, and it is as simple as that a line in 2D is a plane in 3D. With that stated, it is quite easy to visualize that said plane is our model, represented by the linear function
-\begin{equation*}
-  z = 21140.97 + 0.493x + 289.3253y
-\end{equation*}
+The piece of code shown in Figure \ref{fig:training} outputs the model's linear function $y \approx 5.7x + 11200.3$ with a very large mean squared error and small variance score, which are pretty bad results for said metrics.
+
+\subsection{Making a graph}
+Finally, we can plot our dataset in a 2D graph to visualize the straight line that represents our model: \par
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=80mm]{2025-03-26-15-07-35.png}
+  \caption{Plotting a graph}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=110mm]{2025-03-26-15-09-26.png}
+  \caption{Word count vs Number of shares}
+\end{figure}
 
 \section{Results}
-Even though our model is not trustworthy, we can still make some predictions with it. For example, let's suppose we have an article with 2000 words, 10 links, 4 comments, and 6 images, according to our model, we would have around 27913 shares:
+Even though our model is not trustworthy, we can still make some predictions with it. For example, let's suppose we have an article with 2000 words, according to our model, we would have around 22595 shares:
 \begin{equation*}
-  z = 21140.97 + 0.493(2000) + 289.3253(10+4+6) \approx 27913
+  y \approx 5.7(2000) + 11200.3 \approx 22595
 \end{equation*}
 
 \section{Conclusions}
-Guided by the used metrics, it turned out our model was not trustworthy given the dataset. Although it seems like a failure, the model helped to find a tendency: the more words, links, comments, and images an article has, the more shares it will have. Of course it is not as simple as that, but given these inputs, the model suggests that this is true. We could prove it by reducing dimensions using an algorithm like Principal Component Analysis, but that is out of the purpose of this article. \par
+Guided by the used metrics, it turned out our model was not trustworthy given the dataset. Although it seems like a failure, the model helped to find a tendency: the more words an article has, the more shares it will have. Of course it is not as simple as that, but given these inputs, the model suggests that this is true. We could prove it by reducing dimensions using an algorithm like Principal Component Analysis, but that is out of the purpose of this article. \par
 Therefore, we conclude that the model is not suitable for small and dispersed datasets since it will probably lead to an underfitted model that will make bad predictions, but it remains useful to find a tendency early on during a larger investigation.
 
 \bibliographystyle{../common_styles/cs-agh}
