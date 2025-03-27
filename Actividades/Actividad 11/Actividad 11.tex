@@ -1,0 +1,79 @@
+\documentclass[10pt]{article}
+\usepackage[pdftex]{graphicx}
+\graphicspath{{./images/}}
+\usepackage{amsmath,amssymb}
+\usepackage{dirtytalk}
+\usepackage{anyfontsize}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+\usepackage[skip=10pt plus1pt, indent=40pt]{parskip}
+\usepackage{../common_styles/csagh}
+
+
+\begin{document}
+\begin{opening}
+  \title{Logistic regression with Python}
+  \author[Universidad Autónoma de Nuevo León, San Nicolás de los Garza, aldo.hernandezt@uanl.edu.mx]{Aldo Hernández}
+
+  \keywords{...}
+  \begin{abstract}
+    %hehe%
+  \end{abstract}
+
+  \keywords{}
+\end{opening}
+
+\section{Introduction}
+Linear functions can be used not only for regression, but also for \textbf{classification}. In this case, the line---or surface---is called a \textit{decision boundary}---also known as linear separator---and the data that admits this separator are called \textit{linearly separable}. \cite{ai} In order to use these functions for classification, the first approach was to use the $threshold$ function as the classification hypothesis
+\begin{equation*}
+  h_{w}(x) = Threshold(w \cdot x) \text{ where } Threshold(z) = 1 \text{ if } z \geq 0 \text{ and } 0 \text{ otherwise}
+\end{equation*}
+\begin{equation} \label{eq:1}
+  w_{i} \leftarrow w_{i} + \alpha (y - h_{w}(x)) \times x_{i}
+\end{equation}
+But this method has some pretty big disadvantages: even though it is \textit{guaranteed} to converge with linearly separable data, it may take too many steps to do so, also, data may not be linearly separable always, so the algorithm (weight update rule shown in Equation \ref{eq:1}) will fail to converge for a fixed learning rate $\alpha$, unless it decays as $O(1/t)$ where $t$ is the iteration number, then it is shown to converge to a minimum-error solution. \cite{ai} \par
+Also, the hypothesis is not differentiable and is a discontinuous function of its inputs and weights, which makes learning with the \textbf{perceptron rule} shown in Equation \ref{eq:1} pretty complicated. Besides, this function will always return a confident prediction of 1 or 0, even if examples are too close to the boundary; in a lot of situations, this is not optimal since we will need more gradated predictions. \cite{ai} \par
+It's because of these issues that \textit{logistic regression} surges as a better alternative. We define a function---known as logistic or sigmoid---as follows
+\begin{equation*}
+  h_{w}(x) = Logistic(w \cdot x) = \frac{1}{1 + e^{-w \cdot x}}
+\end{equation*}
+This hypothesis gives a probability of $0.5$ for every input at the center, and approaches 0 or 1 as we move away from the boundary \cite{ai}. The process of fitting the weights to this model to minimize the loss on a dataset is called \textbf{logistic regression} \cite{ai}, there is no easy closed-form solution to find the optimal value of $w$ but gradient descent computation is straightforward. Partially differentiating the $L_{2}$ function we get the following
+\begin{equation*}
+  \frac{\partial}{\partial w_{i}}(y - h_{w}(x))^{2} = -2(y - h_{w}(x)) \times h_{w}(x)(1 - h_{w}(x)) \times x_{i}
+\end{equation*}
+Thus, the weight update for minimizing the loss is
+\begin{equation*}
+  w_{i} \leftarrow w_{i} + \alpha(y - h_{w}(x)) \times h_{w}(x)(1 - h_{w}(x)) \times x_{i}
+\end{equation*}
+This process is a \textbf{supervised algorithm} that can classify data into two states---binary, as shown earlier---or multiple tags \cite{aprendeML}. Some common use cases are:
+\begin{itemize}
+  \item Classify mail into spam or not.
+  \item Classify tumors into benign or malignant.
+  \item Classify the content of an article.
+\end{itemize}
+
+\section{Methodology}
+\subsection{Before typing code}
+First of all, we need to download this \href{http://www.aprendemachinelearning.com/wp-content/uploads/2017/11/usuarios_win_mac_lin.csv}{.csv file} \cite{aprendeML}
+
+\subsection{Data analysis}
+\subsection{Creating the model}
+\subsection{Model validation}
+\subsection{Model visualization}
+
+\section{Results}
+
+\section{Conclusions}
+
+\cite{aprendeML}
+
+\bibliographystyle{../common_styles/cs-agh}
+\bibliography{act11_bibliography}
+
+\end{document}
