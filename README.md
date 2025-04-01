@@ -30,6 +30,9 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 - [Actividad 9](./Actividades/Actividad%209/Actividad%209.pdf)
 - [Actividad 10](./Actividades/Actividad%2010/Actividad10.pdf)
 - [Actividad 11](./Actividades/Actividad%2011/Actividad%2011.pdf)
+- [Actividad 12](./Actividades/Actividad%2012/Actividad12.pdf)
+- [Actividad 13](./Actividades/Actividad%2013/Actividad13.pdf)
+- [Actividad 14](./Actividades/Actividad%2014/Actividad14.pdf)
 
 ### Abril - Mayo
 
