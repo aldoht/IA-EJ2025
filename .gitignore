@@ -312,3 +312,10 @@ TSWLatexianTemp*
 
 # Datasets
 Actividades/*/*.csv
+PIA/test_v2/
+PIA/train_v2
+PIA/validation_v2
+
+# Otros archivos
+PIA/*/*.mp4
+PIA/Entregable 1/politicas
