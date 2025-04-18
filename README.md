@@ -90,11 +90,14 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 - S. J. Russell, & P. Norvig, *Artificial intelligence: A modern approach*, 3ra ed., Pearson, 2010. ([pdf](./Libros/Artificial%20Intelligence%20-%20A%20Modern%20Approach%20(3rd%20Edition).pdf))
 - G. Lieberman & F. Hillier, *Introducción a la Investigación de Operaciones*, 9na ed., McGraw Hill, 2010. ([pdf](./Libros/Introducción%20a%20la%20Investigación%20de%20Operaciones%20(9na%20ed)%20-%20Hillier%20Lieberman.pdf))
 - J. Demmel, *Applied Numerical Linear Algebra*, SIAM, 1997. ([pdf](./Libros/Applied%20Numerical%20Linear%20Algebra.pdf))
-- P. Olver & C. Shakiban, *Applied Linear Algebra*, 2da Ed., Springer, 2010. ([pdf](./Libros/Applied%20Linear%20Algebra.pdf))
-- G. Golub, C. Van Loan, *Matrix Computations*, 4ta Ed., John Hopkins, 2013. ([pdf](./Libros/Matrix%20Computations.pdf))
+- P. Olver & C. Shakiban, *Applied Linear Algebra*, 2da ed., Springer, 2010. ([pdf](./Libros/Applied%20Linear%20Algebra.pdf))
+- G. Golub, C. Van Loan, *Matrix Computations*, 4ta ed., John Hopkins, 2013. ([pdf](./Libros/Matrix%20Computations.pdf))
 - D. Lay, S. Lay & J. McDonald, *Linear Algebra and its Applications*, 5ta ed., Pearson, 2016. ([pdf](./Libros/Linear%20Algebra%20and%20its%20Applications.pdf))
 - C. Meyer, *Matrix Analysis and Applied Linear Algebra*, SIAM, 2000. ([pdf](./Libros/Matrix%20Analysis%20and%20Applied%20Linear%20Algebra.pdf))
-- J. Bagnato, *Aprende Machine Learning*, 1.5 ed., Leanpub, 2020. ([pdf](./Libros/Aprende%20Machine%20Learning.pdf))
+- J. Bagnato, *Aprende Machine Learning*, Version 1.5, Leanpub, 2020. ([pdf](./Libros/Aprende%20Machine%20Learning.pdf))
+- G. James, D. Witten, T. Hastie, & R. Tibshirani, *An introduction to statistical learning with applications in Python*, 2da ed., Springer, 2023. ([pdf](./Libros/An%20Introduction%20to%20Statistical%20Learning.pdf))
+- A. Zhang, Z. C. Lipton, M. Li, & A. J. Smola, *Dive into deep learning*, Version 1.0.3, 2022. ([pdf](./Libros/Dive%20into%20Deep%20Learning.pdf))
+- S. Raschka, Y. Liu, & V. Mirjalili, *Machine learning with PyTorch and Scikit-Learn: Develop machine learning and deep learning models with Python*, Packt Publishing, 2022. ([pdf](./Libros/Machine%20Learning%20with%20PyTorch%20and%20Scikit-Learn.pdf))
 
 ## Agradecimientos
 Agradecimiento especial a la *Computer Science Journal* por hacer sus [estilos](https://journals.agh.edu.pl//public/journals/4/styles/StyleWithSamples.zip) de LaTeX para artículos accesibles para todos, con los cuales hice la gran mayoría de mis tareas para esta materia.
