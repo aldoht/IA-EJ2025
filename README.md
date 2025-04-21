@@ -98,6 +98,7 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 - G. James, D. Witten, T. Hastie, & R. Tibshirani, *An introduction to statistical learning with applications in Python*, 2da ed., Springer, 2023. ([pdf](./Libros/An%20Introduction%20to%20Statistical%20Learning.pdf))
 - A. Zhang, Z. C. Lipton, M. Li, & A. J. Smola, *Dive into deep learning*, Version 1.0.3, 2022. ([pdf](./Libros/Dive%20into%20Deep%20Learning.pdf))
 - S. Raschka, Y. Liu, & V. Mirjalili, *Machine learning with PyTorch and Scikit-Learn: Develop machine learning and deep learning models with Python*, Packt Publishing, 2022. ([pdf](./Libros/Machine%20Learning%20with%20PyTorch%20and%20Scikit-Learn.pdf))
+- T. Hastie, R. Tibshirani, J. Friedman, *The Elements of Statistical Learning*, 2da ed., Springer, 2009. ([pdf](./Libros/The%20Elements%20of%20Statistical%20Learning.pdf))
 
 ## Agradecimientos
 Agradecimiento especial a la *Computer Science Journal* por hacer sus [estilos](https://journals.agh.edu.pl//public/journals/4/styles/StyleWithSamples.zip) de LaTeX para artículos accesibles para todos, con los cuales hice la gran mayoría de mis tareas para esta materia.
