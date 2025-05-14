@@ -1,0 +1,112 @@
+\usepackage[utf8]{inputenc} % Codificación de entrada en UTF-8
+\usepackage[spanish]{babel} % Traduce elementos automáticos (como fechas, títulos) al español
+
+\usepackage{epsfig,graphicx} % Para insertar y manejar imágenes
+\usepackage[left=2cm,right=2cm,top=1.8cm,bottom=2.3cm]{geometry} % Márgenes del documento
+\usepackage{array} % Mejora el control de tablas
+\usepackage{tabularx} % Tablas con ancho automático ajustable
+\usepackage{multicol} % Permite múltiples columnas en el texto
+\usepackage{ifthen} % Estructuras condicionales (\ifthenelse)
+
+\usepackage{hyperref}  % Permite enlaces clicables en el documento (URL, referencias internas, DOIs)
+\usepackage{doi}       % Da formato adecuado a los DOIs y los convierte en enlaces clicables
+
+\usepackage{amsmath} % Entornos matemáticos mejorados
+\usepackage{amssymb} % Símbolos matemáticos adicionales
+\usepackage{amsthm}  % Entornos para teoremas, demostraciones, etc.
+
+\usepackage{fancyhdr} % Cabeceras y pies de página personalizados
+\usepackage{lastpage} % Referencia a la última página del documento para numeración
+
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{\textit{Página \thepage \hspace{1pt} de \pageref{LastPage}}}
+
+\usepackage{lipsum} % Genera texto de prueba (Lorem Ipsum)
+
+
+
+% Cambia el texto que aparece antes del enlace DOI en la bibliografía.
+% Por defecto es solo el enlace; esto lo personaliza para que diga "DOI: <link>"
+\renewcommand{\doitext}{DOI:~}
+
+% Define un autor con formato personalizado.
+% Parámetros:
+% #1 = Nombre completo del autor
+% #2 = Correo electrónico
+% #3 = Institución (si está vacío, se omite)
+% #4 = Ciudad, Estado, País
+\newcommand{\customauthor}[4]{%
+  \begin{minipage}[t]{\linewidth}
+    \centering
+    \textbf{#1} \\            % Nombre en negritas
+    #2 \\                     % Correo electrónico
+    \ifthenelse{\equal{#3}{}}{}{%
+      \texttt{#3} \\          % Institución (en monoespaciado si se proporciona)
+    }
+    #4                        % Ciudad, Estado, País
+  \end{minipage}
+}
+
+% Muestra una fila de autores centrada con 1 autor (uso en portada o encabezado)
+\newcommand{\authorrowone}[1]{%
+\begin{center}
+\begin{tabularx}{0.5\textwidth}{>{\centering\arraybackslash}X}
+#1
+\end{tabularx}
+\end{center}
+}
+
+% Muestra una fila de autores centrada con 2 autores
+\newcommand{\authorrowtwo}[2]{%
+\begin{center}
+\begin{tabularx}{0.75\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X}
+#1 & #2
+\end{tabularx}
+\end{center}
+}
+
+% Muestra una fila de autores centrada con 3 autores
+\newcommand{\authorrowthree}[3]{%
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X}
+#1 & #2 & #3
+\end{tabularx}
+\end{center}
+}
+
+% Cabecera institucional con logotipos laterales y texto centrado
+% Parámetros:
+% #1 = Nombre de la materia
+% #2 = Grupo o sección
+% #3 = Título del trabajo
+% #4 = Fecha o información adicional
+\newcommand{\cabecera}[4]{%
+\noindent\makebox[\textwidth][c]{%
+	\begin{minipage}{3cm}
+		\vspace{-6mm}
+        \centering
+        \includegraphics[height=3.4cm]{UANL.eps} % Logo izquierdo
+        \vspace{1mm}
+    \end{minipage}
+    \hspace{0.5cm} % Espaciado entre columnas
+    \begin{minipage}{9cm}
+    	\vspace{-6mm}
+        \centering
+        \textbf{\large Universidad Autónoma de Nuevo León}\\[0.1cm]
+        \textbf{Facultad de Ciencias Físico Matemáticas}\\[0.1cm]
+        \textbf{#1 $\vert$ #2}\\[0.1cm]
+        #3\\[0.1cm]
+        #4\\[0.1cm]
+        \vspace{1mm}
+    \end{minipage}
+    \hspace{0.5cm}
+    \begin{minipage}{3cm}
+	    \vspace{-6mm}
+        \centering
+        \includegraphics[height=3.4cm]{FCFM.eps} % Logo derecho
+        \vspace{1mm}
+    \end{minipage}
+}%
+}
+
