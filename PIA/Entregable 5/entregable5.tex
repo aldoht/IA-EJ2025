@@ -29,11 +29,11 @@
 	\rule{17cm}{0.1mm}
 	
 	\begin{abstract}
-		% hehe %
+		This work presents the development of a neural network designed to perform Optical Character Recognition (OCR) on handwritten names. Using a dataset of over 400,000 labeled name images, we built a hybrid architecture combining Convolutional Neural Networks (CNNs) for spatial feature extraction with Bidirectional Long Short-Term Memory (BiLSTM) layers for sequential modeling. The model was trained using the Connectionist Temporal Classification (CTC) loss and evaluated with the Character Error Rate (CER) metric. After multiple iterations involving adjustments to preprocessing, architecture, and hyperparameters, the final model achieved a validation loss below 5 and a CER below 1.2. These results demonstrate the model’s effectiveness in handling highly variable handwriting styles. While further improvements such as additional training epochs and architectural enhancements could be explored, the current results validate the approach as a viable solution for handwritten name recognition.
 	\end{abstract}
 	
 	\smallskip
-	\noindent\textbf{Keywords: } % hehe %
+	\noindent\textbf{Keywords: } OCR, CNN, BiLSTM, handwriting
 	
 	\section{Introduction}
 	Ever since the use of charcoal for cave paintings, writing has become utterly necessary for humans. Whether we may need to write down something important, make a letter for our loved ones, or even just to express feelings we can't say aloud, writing has became a timeless and often recipient-less way of communication that can leave a trace of everything you could ever think of to whoever that can take a glance at any used writing surface.
@@ -238,7 +238,7 @@
 	The model is trained with the \textbf{CTC Loss} function and the \textbf{CER} metric. It also has two callbacks that implement techniques to increase the training efficiency: \texttt{EarlyStopping} to stop the training if \texttt{val\_loss} does not get better after 6 epochs, and \texttt{ReduceLROnPlateau} that decreases learning rate when the validation metric no longer reduces.
 	
 	\section{Previous Models}
-	The first trained model was a complete disaster probably due to the fact that it was trained only for 100 epochs. After some tweaks and fixes to the source code including the following:
+	The initial model yielded extremely poor performance, likely due to inadequate training duration and suboptimal preprocessing. After some tweaks and fixes to the source code including the following:
 	\begin{itemize}
 		\item Changes in how data was loaded and processed.
 		\item Adjustments in how the labels were vectorized and padded.
@@ -248,7 +248,7 @@
 		\item Add a class to the total number of classes for the model's output.
 	\end{itemize}
 	
-	But even after these changes, the results were still bad for what we aimed. The comparison between said models is displayed in table \ref{tab:model_comp}.
+	Despite these improvements, the performance remained below expectations, particularly with respect to the CER and validation loss. The comparison between said models is displayed in table \ref{tab:model_comp}.
 	
 	\begin{table}[!h]
 		\centering
@@ -272,9 +272,44 @@
 	\end{table}
 	
 	\section{Results}
-	After picking up the second model to restart training from where it was left off, 
+	After picking up the second model to restart training from where it was left off, we added 112 epochs and changed the learning rate to $0.001$. The resulting model is the final result of the article, it reached a validation loss of less than 5 per epoch, and a CER per epoch smaller than 1.2, as seen in figure \ref{fig:final_metrics}. Some of the made predictions over the test set are showcased in figure \ref{fig:model_pred}.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\linewidth]{final_model_graphs.png}
+		\caption{Metrics for the third model.}
+		\label{fig:final_metrics}
+	\end{figure}
+	
+	\begin{figure}[!h]
+		\centering
+		\begin{subfigure}[b]{0.45\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{pred1.jpg}
+		\end{subfigure}		
+		\begin{subfigure}[b]{0.45\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{pred2.jpg}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{pred3.jpg}
+		\end{subfigure}	
+		\begin{subfigure}[b]{0.45\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{pred4.jpg}
+		\end{subfigure}	
+		\caption{Predictions made by the model.}
+		\label{fig:model_pred}
+	\end{figure}
 	
 	\section{Conclusions}
+	
+	The results demonstrate that the model is capable of effectively predicting names with a relatively high degree of accuracy. This indicates that the current architecture and training regimen are sufficient for capturing the underlying patterns in the dataset. However, there remains room for further improvement and refinement.
+	
+	For instance, extending the training process by an additional 100 epochs may allow the model to converge more fully and potentially achieve better generalization. Additionally, increasing the number of filters in the convolutional layers could enable the network to learn more complex and nuanced features from the input data. These adjustments could lead to enhanced performance, particularly in edge cases or less common naming patterns.
+	
+	Nonetheless, implementing such modifications goes beyond the scope and intent of this article, which primarily aimed to explore the feasibility of using this specific neural architecture for name prediction tasks. Future work may consider these directions in order to further optimize and expand the capabilities of the model.
 	
 	\bigskip
 	
