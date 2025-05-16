@@ -134,9 +134,30 @@
 	For our model we define a custom class \textbf{CTCOCRModel} that creates the neural network and manages the metric explained in section \ref{subsec:metric}. This class implements custom \texttt{train\_step} and \texttt{test\_step} methods allowing control over how loss is computed, direct integration with the metric, and dynamic loss computation with sparse tensors to support variable-length labels. \textbf{CTC Loss} is used since it allows training without requiring aligned input and output sequences, which is ideal for OCR tasks where the position of characters in the image isn't strictly aligned with output positions.
 	
 	\subsubsection{Network Architecture}
-	The implemented network has a \textbf{hybrid architecture} that combines a convolutional network (CNN) with a bidirectional long short-term memory network (BiLSTM).
+	The implemented network has a \textbf{hybrid architecture} that combines a convolutional network (CNN) with a bidirectional long short-term memory network (BiLSTM), as shown in figure \ref{fig:net_architecture}.
 	
-	The model begins with a convolutional block composed of convolution and pooling layers that extract spatial features from the input image, then a reshape layer converts the 3D feature map output from the CNN into a sequence of vectors suitable for recurrent layers, next the fully connected dense layers refine the extracted features to allow more abstract representations, after that the dropout layer prevents overfitting by encouraging redundancy in learned features, subsequently the bidirectional LSTM layers process the sequence in both directions, and finally the output dense layer outputs logits for each character class at each time step (position), making the output compatible with the Connectionist Temporal Classification (CTC) loss function.
+	The model begins with a convolutional block composed of convolution and pooling layers that extract spatial features from the input image, then a reshape layer converts the 3D feature map output from the CNN into a sequence of vectors suitable for recurrent layers, next the fully connected dense layers refine the extracted features to allow more abstract representations, after that the dropout layer prevents overfitting by encouraging redundancy in learned features, subsequently the bidirectional LSTM layers process the sequence in both directions (figure \ref{fig:bilstm_process}), and finally the output dense layer outputs logits for each character class at each time step (position), making the output compatible with the Connectionist Temporal Classification (CTC) loss function.
+	
+	\begin{figure}[h]
+		\centering
+		\begin{subfigure}[b]{0.58\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{network_architecture_v2.png}
+			\caption{Model's neural network architecture.}
+			\label{fig:net_architecture}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.38\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{bilstm_process_v2.png}
+			\caption{BiLSTM layer process.}
+			\label{fig:bilstm_process}
+		\end{subfigure}
+		\caption{Neural network architecture and BiLSTM process.}
+		\label{fig:combined}
+	\end{figure}
+	
+	\newpage
 	
 	\subsection{Main Workflow and Model Configuration}
 	The principal workflow is defined as follows:
@@ -166,6 +187,8 @@
 		\caption{Character Vocabulary and Label Parameters.}
 		\label{tab:vocab_params}
 	\end{table}
+	
+	\newpage
 	
 	\subsection{Model Build and Loading a Model}
 	To build the model we create an instance of the class defined in section \ref{subsec:model_class} with the parameters stated in table \ref{tab:model_config}. After the model is defined, it is compiled with an \textbf{Adam} optimizer with an initial learning rate of $0.1$, then it is built and the model summary can be consulted in table \ref{tab:architecture}.
@@ -302,6 +325,8 @@
 		\caption{Predictions made by the model.}
 		\label{fig:model_pred}
 	\end{figure}
+	
+	\newpage
 	
 	\section{Conclusions}
 	
