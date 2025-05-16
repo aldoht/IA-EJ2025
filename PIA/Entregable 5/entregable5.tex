@@ -78,6 +78,8 @@
 		\label{tab:dataset}
 	\end{table}
 	
+	\newpage
+	
 	\subsection{Variables and Hyperparameters}
 	After choosing and exploring the dataset, we decided to use the \textit{Keras} and \textit{TensorFlow} frameworks in order to build our neural network. To start with, we imported the necessary libraries in our script, then we took on setting up the constants and hyperparameters for the model as shown in table \ref{tab:hyperparams}. Next, we defined some global dynamic variables that will have importance during data preprocessing such as filenames and model callbacks.
 	
@@ -129,7 +131,7 @@
 	Finally, the \texttt{create\_tf\_dataset} function creates the dataset that will be used for the \textit{TensorFlow} model, using the previous helper functions to map the original dataset, preparing it for model use. Then the processed data is cached into the memory.
 	
 	\subsection{Model class} \label{subsec:model_class}
-	For our model we define a custom class \textbf{CTCOCRModel} that creates the neural network and manages the metric explained in section \ref{subsec:metric}. This class implements custom \texttt{train\_step} and \texttt{test\_step} methods allowing control over how loss is computed, direct integration with the metric, and dynamic loss computation with sparse tensors to support variable-length labels. \textbf{CTC Loss} is used since it allows training without requiring aligned input and output sequences, which is ideal for OCR tasts where the position of characters in the image isn't strictly aligned with output positions.
+	For our model we define a custom class \textbf{CTCOCRModel} that creates the neural network and manages the metric explained in section \ref{subsec:metric}. This class implements custom \texttt{train\_step} and \texttt{test\_step} methods allowing control over how loss is computed, direct integration with the metric, and dynamic loss computation with sparse tensors to support variable-length labels. \textbf{CTC Loss} is used since it allows training without requiring aligned input and output sequences, which is ideal for OCR tasks where the position of characters in the image isn't strictly aligned with output positions.
 	
 	\subsubsection{Network Architecture}
 	The implemented network has a \textbf{hybrid architecture} that combines a convolutional network (CNN) with a bidirectional long short-term memory network (BiLSTM).
@@ -164,8 +166,6 @@
 		\caption{Character Vocabulary and Label Parameters.}
 		\label{tab:vocab_params}
 	\end{table}
-	
-	\newpage
 	
 	\subsection{Model Build and Loading a Model}
 	To build the model we create an instance of the class defined in section \ref{subsec:model_class} with the parameters stated in table \ref{tab:model_config}. After the model is defined, it is compiled with an \textbf{Adam} optimizer with an initial learning rate of $0.1$, then it is built and the model summary can be consulted in table \ref{tab:architecture}.
