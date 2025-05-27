@@ -6,9 +6,6 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 - [Actividades](#actividades)
   - [Enero - Febrero](#enero---febrero)
   - [Marzo](#marzo)
-  - [Abril - Mayo](#abril---mayo)
-  - [100 Programas](#100-programas)
-  - [Proyecto Final](#proyecto-final)
 - [Certificaciones](#certificaciones)
   - [Kaggle](#kaggle)
   - [IBM (CognitiveClass)](#ibm-cognitiveclass)
@@ -34,12 +31,12 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 - [Actividad 13](./Actividades/Actividad%2013/Actividad13.pdf)
 - [Actividad 14](./Actividades/Actividad%2014/Actividad14.pdf)
 
-### Abril - Mayo
-
-### 100 Programas
-
 ### Proyecto Final
 - [Primer entregable](./PIA/Entregable%201/entregable1.pdf)
+- [Segundo entregable](./PIA/Entregable%202/entregable2.pdf)
+- [Tercer entregable](./PIA/Entregable%203/entregable-3.pdf)
+- [Cuarto entregable](./PIA/Entregable%204/entregable4.pdf)
+- [Quinto entregable](./PIA/Entregable%205/entregable5.pdf) (final)
 
 ## Certificaciones
 
