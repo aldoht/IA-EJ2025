@@ -32,9 +32,12 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 - [Actividad 14](./Actividades/Actividad%2014/Actividad14.pdf)
 
 ### Proyecto Final
+
+Para el proyecto final decidimos crear una red neuronal híbrida para reconocimiento óptico de caracteres (OCR), el proceso se detalla en cada uno de los documentos "entregables" pero el proceso completo se encuentra sintetizado en el documento final. El resultado final fue este [modelo](./PIA/Entregable%205/ocr_final_model.keras) con una tasa de error aproximada de 1.2 caracteres, el proceso de entrenamiento se encuentra en el siguiente [Google Colab](https://colab.research.google.com/drive/1QgsYApCrUPFSMy1X5YJxDIpFz3z0S9U8?usp=sharing).
+
 - [Primer entregable](./PIA/Entregable%201/entregable1.pdf)
 - [Segundo entregable](./PIA/Entregable%202/entregable2.pdf)
-- [Tercer entregable](./PIA/Entregable%203/entregable-3.pdf)
+- [Tercer entregable](./PIA/Entregable%203/entregable3.pdf)
 - [Cuarto entregable](./PIA/Entregable%204/entregable4.pdf)
 - [Quinto entregable](./PIA/Entregable%205/entregable5.pdf) (final)
 
@@ -51,6 +54,13 @@ Repositorio donde se encuentra todo el material relacionado a la clase de Inteli
 - [Intro to SQL](https://www.kaggle.com/learn/certification/mnstrr/intro-to-sql)
 - [Advanced SQL](https://www.kaggle.com/learn/certification/mnstrr/advanced-sql)
 - [Intro to Deep Learning](https://www.kaggle.com/learn/certification/mnstrr/intro-to-deep-learning)
+- [Computer Vision](https://www.kaggle.com/learn/certification/mnstrr/computer-vision)
+- [Time Series](https://www.kaggle.com/learn/certification/mnstrr/time-series)
+- [Data Cleaning](https://www.kaggle.com/learn/certification/mnstrr/data-cleaning)
+- [Intro to AI Ethics](https://www.kaggle.com/learn/certification/mnstrr/intro-to-ai-ethics)
+- [Geospatial Analysis](https://www.kaggle.com/learn/certification/mnstrr/geospatial-analysis)
+- [Machine Learning Explainability](https://www.kaggle.com/learn/certification/mnstrr/machine-learning-explainability)
+- [Intro to Game AI and Reinforcement Learning](https://www.kaggle.com/learn/certification/mnstrr/intro-to-game-ai-and-reinforcement-learning)
 
 ### IBM (CognitiveClass)
 - [Python 101 for Data Science](https://courses.cognitiveclass.ai/certificates/3ecce9e8f838407dbe48ace645420e0f)
