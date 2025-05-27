@@ -2,8 +2,6 @@ import kagglehub
 from kagglehub import KaggleDatasetAdapter
 import pandas as pd
 import matplotlib.pyplot as plt
-plt.rcParams['figure.figsize'] = (16, 9)
-plt.style.use('Solarize_Light2')
 
 # Preview del dataset
 file_path = "CSV/"
@@ -49,11 +47,20 @@ print('Conteo de todos los caracteres del conjunto de entrenamiento (ya en mayú
 
 # Grafica
 count = pd.Series(all_chars)
-count.sort_values(ascending=False).plot(kind='bar', color='green')
-plt.xticks(rotation=0)
-plt.title('Conteo de caracteres en las etiquetas')
-plt.ylabel('Frecuencia')
-plt.xlabel('Caracteres')
+count = count.sort_values(ascending=False)
+
+plt.style.use('ggplot')  # or try 'ggplot', 'seaborn-darkgrid', etc.
+fig, ax = plt.subplots(figsize=(10, 6))
+count.plot(kind='bar', color='#1f77b4', edgecolor='black', ax=ax)
+ax.set_title('Character Count in Tags', fontsize=16, fontweight='bold')
+ax.set_xlabel('Characters', fontsize=14)
+ax.set_ylabel('Frequency', fontsize=14)
+ax.tick_params(axis='x', rotation=0, labelsize=12)
+ax.tick_params(axis='y', labelsize=12)
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.yaxis.grid(True, linestyle='--', which='major', color='gray', alpha=0.7)
+plt.tight_layout()
 plt.show()
 
 # Cambiar todos los paths a las imagenes
